@@ -1,0 +1,27 @@
+1. This code will output outer/inner/outer. 
+
+The testScope() declaration (including function body as always) will be hoisted, but it won't be executed until invoked on line 9. The declaration for local variable a will be hoisted (underneath testScope's function declaration), and it will then be initialized to reference the string 'outer' before the first call to console.log().
+
+Because local variable a points to 'outer' in the global scope, the calls to console.log on lines 8 and 10 will output 'outer'; only the call to testScope, which defines an inner local variable a that points to 'inner', will output 'inner'.
+
+2. This code will output outer/inner/inner. Both the function and variable a declaration are hoisted as in problem 1, but now the function definition for testScope reassigns global variable a instead of declaring a new local variable with the same name (which then shadows the outer variable). 
+
+Thus, the call to testScope on line 9 reassigns global variable to point to the string 'inner', so first 'outer' is output and then inner twice.
+
+3. Inside the goShopping function body, the function and variable declarations will be hoisted as normal. Function expressions assigned to variables act like other variable declarations, so the variable declarations themselves are hoisted but the assignment to function bodies doesn't take place until that point has been reached in the code.
+
+Function declarations are hoisted above variable declarations, so the declaration of basket and then its initiazliation will act as though it's beneath the goShopping declaration but will both be exectued prior to goShopping's invocation.
+
+This should be output: empty/play station/computer.
+
+4. I believe variable a is global since it's not being declared using let, const, or var, so I think this code will output 'hi' since that's the string global variable a is initialized to.
+
+5. This code will lead to a ReferenceError, since a is declared as a local variable with block scope inside the hello function. When console.log is invoked on line 6, local variable a is out of scope and thus the error will be raised (unless another variable named a happens to be in scope).
+
+6. This code will output undefined.
+
+The declaration for global variable a will be hoisted, but it isn't initialized to point to 1 until after the call to console.log. Since a is declared using var, it will implicitly reference undefined prior to reaching its explicit initialization.
+
+7. This code will lead to a ReferenceError. The declaration of global variable a is hoisted, but because it's declared using let, it falls into the Temporal Dead Zone until initialized on line 3. Thus, at the point when console.log is invoked, it has no value and a ReferenceError is raised.
+
+8. This code will lead to a ReferenceError. The declaration and function body of hello will be hoisted, but until it's invoked, its code will not execute and global variable a will not be initialized. 
