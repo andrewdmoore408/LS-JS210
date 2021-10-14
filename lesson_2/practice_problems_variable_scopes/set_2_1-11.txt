@@ -1,0 +1,29 @@
+1. This will output undefined. Local variable a is being declared with the var keyword, so it's function-scoped and will be hoisted to the top of the function body. The block of code after if (false) will never run, so local variable a will not be explicitly initialized, but variables declared with var are implicitly set to undefined, and that's what will be output.
+
+2. This code will raise a ReferenceError. Variables declared with let have block scope, so the declaration (and initialization) of local variable a to the string will never happen. On line 6, when console.log is invoked, an error will be raised because a hasn't been declared/defined.
+
+3. I believe 'hello' will be output twice here, though I'm not sure if a will end up being a function-scoped or global variable.
+
+NOTE: This is incorrect. The declaration using var is hoisted, so a is a function-scoped variable. Thus, it is out of scope when console.log is invoked on line 13. So 'hello' is output once (on line 5) and then a ReferenceError is raised.
+
+4. Now I think 'hello' should be output twice. The declaration of a on line 2 doesn't have any keyword before it, so it should be a global variable. The block after if (false) never runs, so a local variable a pointing to 'hello again' is never initialized--and even if it were, it would only be in scope until the end of its block.
+
+Thus, first 'hello' is output on line 3 and then again on line 11, where it's still in scope because it's a global variable.
+
+5. 4 will be output--the last value of index in the for loop.
+
+6. 'hello' will be output. There is a different local/block-scoped variable named a being assigned to the value of index on each iteration, but this particular local variable a is only in scope as long as that for block is being executed.
+
+At the call to console.log on line 7, a is a global variable which points to the string 'hello'.
+
+7. This will output 4/3. The return value of foo is 4, and the variable a has been reassigned to point to 3 as a result of foo's execution.
+
+8. I think this will output 'superNested' and then 'global'. checkScope's return value is nested(), and nested() returns superNested(), which returns 'superNested'. There are multiple variables named a being manipulated, but the a in scope on line 19 is the global variable a, which points to 'global'.
+
+9. This will output outer/outer/inner/inner. Variables a and b are declared in the top scope, so they are global. They're both assigned to 'outer' at first, and then the invocation of setScope reassigns them both to point to 'inner'.
+
+NOTE: The third string output is 'outer', not inner. The assignment to the argument on line 11 is breaking the binding to the outer variable and is not mutating the external global variable a. I need to remember that function arguments are local variables in the function.
+
+10. This should output 50/60/15. total and increment are global variables; the invocation of incrementBy on line 9 reassigns total to its previous value (50) + 10, the argument passed in, but the global variable increment always points to 15.
+
+11. This will output 'outer' and then raise an error. The anonymous function to which setScope would later be initialized hasn't been assigned to it yet on line 4, so setScope will implicitly point to undefined, which isn't a function.
