@@ -1,0 +1,5 @@
+1. foo has two side effects: it mutates a non-local variable (the array which is passed in as an argument) and also outputs text to the console.
+
+2. Function 3 is a pure function: it has no side effects and its return value is solely dependent on the arguments it's passed upon invocation and will change if its arguments change.
+
+// NOTE: Functions 2 and 5 are also pure functions. Although their return values are constant, they are still considered pure functions.
