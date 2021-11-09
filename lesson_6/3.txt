@@ -1,0 +1,5 @@
+Airbnb instructs us to always use the strict equality check (3 equals signs).
+
+Updated:
+
+let completed = lastPageRead === 400;

@@ -1,0 +1,7 @@
+One issue here is multiple initializations. Each variable should be declared and initialized separately. Another thing is that page_count should be changed to camelCase.
+
+Updated:
+
+let title = 'The Three-Body Problem';
+let author = 'Cixin Liu';
+let pageCount = 400;

@@ -1,0 +1,10 @@
+A multiline block should use braces.
+
+Updated:
+
+if (finishedBook()) {
+  console.log('You have finished reading this book.');
+}
+
+(Another option would be as follows:
+if (finishedBook()) console.log('You have finished reading this book.');

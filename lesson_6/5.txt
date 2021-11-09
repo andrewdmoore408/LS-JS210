@@ -1,0 +1,14 @@
+There are at least 3 issues here: There should be spaces between the variable names, operators, and values; template strings should be used instead of concatenating with +; and the lines in the function body are indented way too far (should just be two spaces in).
+
+Updated:
+
+function read(pages) {
+  console.log('You started reading.');
+
+  for (let page = 0; page < pages; page += 1) {
+    let message = `You read page ${page}`;
+    console.log(message);
+  }
+}
+
+read(400);
